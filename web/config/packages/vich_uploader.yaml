@@ -1,0 +1,20 @@
+vich_uploader:
+    db_driver: orm
+    mappings:
+        avatars:
+           uri_prefix: /images/avatar
+           upload_destination: '%kernel.project_dir%/public/images/avatar'
+           namer: Vich\UploaderBundle\Naming\UniqidNamer
+        song_image:
+            uri_prefix: /images/song
+            upload_destination: '%kernel.project_dir%/public/images/song'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+        song_song:
+            uri_prefix: /song
+            upload_destination: '%kernel.project_dir%/public/song'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+        playlist_image:
+            uri_prefix: /images/playlist
+            upload_destination: '%kernel.project_dir%/public/images/playlist'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+

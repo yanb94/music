@@ -1,0 +1,87 @@
+@use "@abstractStyle" as g;
+@use "@mixins/responsive_image.scss" as r;
+
+@mixin twoColumnContainer($height: "auto", $leftElemSize: "auto", $rightElemSize: "auto") {
+    
+    height: $height;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    
+    @media(min-width: map-get($map: g.$breakPoint, $key: "M"))
+    {
+        grid-template-columns: $leftElemSize $rightElemSize;
+    }
+    
+    @content;
+}
+
+@mixin twoColumnImage($image, $position: "right")
+{
+    &--image
+    {
+        grid-row: 1;
+        grid-column: 1;
+        // background-image: url($image);
+        @include r.responsiveImage($image);
+        background-size: cover;
+        background-position: center;
+
+        @if $position == "right" {
+            @media(min-width: map-get($map: g.$breakPoint, $key: "M"))
+            {
+                grid-column: 2;
+            }
+        }
+
+        @content;
+    }
+}
+
+@mixin twoColumnContent($backgroundColor, $position, $backgroundOpacityMobile: .9)
+{
+    &--content
+    {
+        grid-row: 1;
+        grid-column: 1;
+        background-color: rgba($backgroundColor, $alpha: $backgroundOpacityMobile);
+
+        @media(min-width: map-get($map: g.$breakPoint, $key: "M"))
+        {
+            @if $position == "right" {
+                grid-column: 2;
+            }
+
+            background-color: $backgroundColor;
+        }
+
+        @content;
+    }
+}
+
+@mixin oneColumnWithBackgroundImage($height: "auto", $image, $backgroundColor, $backgroundOpacity)
+{
+    height: $height;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+
+    &--image
+    {
+        grid-row: 1;
+        grid-column: 1;
+        // background-image: url($image);
+        @include r.responsiveImage($image);
+        background-size: cover;
+        background-position: center;
+    }
+
+    &--content
+    {
+        grid-row: 1;
+        grid-column: 1;
+        background-color: rgba($backgroundColor, $alpha: $backgroundOpacity);
+    }
+
+    @content;
+}

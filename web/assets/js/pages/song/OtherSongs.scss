@@ -1,0 +1,53 @@
+@use "@abstractStyle" as g;
+
+.other-song
+{
+    width: 100%;
+    max-width: 850px;
+
+    &--title
+    {
+        font-size: 30px;
+        color: #FFF;
+        font-family: g.$fontTitle;
+        position: relative;
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        margin-top: 10px;
+        justify-content: center;
+
+        @media(min-width: map-get($map: g.$breakPoint, $key: 'S'))
+        {
+            font-size: 40px;
+            justify-content: flex-start;
+            margin-top: 20px;
+        }
+    }
+
+    &--list
+    {
+        display: grid;
+        justify-content: center;
+        justify-items: center;
+        row-gap: 20px;
+        grid-template-columns: repeat(auto-fill,150px);
+        padding-top: 20px;
+        column-gap: 60px;
+        padding-bottom: 20px;
+    }
+
+    &--error
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: g.$white;
+        font-family: g.$fontSubtitle;
+        font-size: 20px;
+        padding: 20px;
+    }
+
+}

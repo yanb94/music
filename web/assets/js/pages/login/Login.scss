@@ -1,0 +1,73 @@
+@use "@abstractStyle" as g;
+@use "@mixins/elements.scss" as element;
+
+.login
+{
+    @include element.twoColumnContainer($height: auto,$leftElemSize: minmax(600px,55%), $rightElemSize: auto)
+    {
+        min-height: 100vh;
+        color: g.$white;
+
+        @include element.twoColumnImage($image:"~@imageBackground/login-head.jpg", $position: "right");
+        @include element.twoColumnContent(map-get(g.$primary,"regular"), $position: "left")
+        {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+            padding-top: 75px;
+
+            &--card
+            {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: map-get(g.$primary, "light");
+                max-width: 650px;
+                width: 100%;
+
+                padding: 20px 10px;
+
+                @media(min-width: map-get(g.$breakPoint, "S"))
+                {
+                    padding: 20px;
+                }
+
+                @media(min-width: map-get(g.$breakPoint, "M"))
+                {
+                    padding: 30px;
+                }
+
+                &--form
+                {
+                    width: 100%;
+                    max-width: 500px;
+
+                    &--title
+                    {
+                        font-family: g.$fontTitle;
+                        font-size: 45px;
+                        font-weight: bold;
+                        text-align: center;
+                        margin-bottom: 15px;
+
+                        @media(min-width: map-get(g.$breakPoint, "S"))
+                        {
+                            font-size: 55px;
+                        }
+                    }
+
+                    &--cont-btn
+                    {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        flex-direction: column;
+                        margin-top: 20px;
+                    }
+                }
+            }
+        }
+    }
+}

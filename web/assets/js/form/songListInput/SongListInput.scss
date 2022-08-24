@@ -1,0 +1,152 @@
+@use "@abstractStyle" as g;
+
+.song-list-input
+{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+
+    label
+    {
+        font-family: g.$fontSubtitle;
+        font-size: 30px;
+    }
+
+    input
+    {
+        color: g.$white;
+        height: 40px;
+        font-size: 25px;
+        font-family: g.$fontBody;
+        width: 100%;
+        border: none;
+        background-color: transparent;
+        border: none;
+        border-bottom: 2px solid g.$white;
+        padding: 5px;
+
+        &::placeholder
+        {
+            font-size: 20px;
+            font-family: g.$fontBody;
+            font-style: italic;
+        }
+    }
+
+    &--list-songs
+    {
+        background-color: g.$white;
+        position: relative;
+        top: -1px;
+        margin-bottom: -1px;
+
+        &--item
+        {
+            display: grid;
+            grid-template-columns: 100px auto;
+            height:90px;
+            border-bottom: 1px solid map-get(g.$primary, 'light');
+            transition: ease .5s;
+
+            &--image
+            {
+                width: 100%;
+                height: 90px;
+                object-fit: cover;
+            }
+
+            &--info
+            {
+                padding: 10px;
+                padding-top: 5px;
+
+                font-family: g.$fontSubtitle;
+                color: g.$black;
+
+                position: relative;
+
+                &--name
+                {
+                    font-size: 20px;
+                    font-weight: bold;
+                }
+
+                &--author
+                {
+                    font-size: 15px;
+                    font-style: italic;
+                }
+            }
+
+            &:hover
+            {
+                background-color: darken(g.$white,10%);
+            }
+        }
+    }
+
+    &--selected-items
+    {
+        margin-bottom: 10px;
+
+        &--item
+        {
+            display: grid;
+            grid-template-columns: 100px auto;
+            height:90px;
+            border-bottom: 1px solid map-get(g.$primary, 'light');
+            transition: ease .5s;
+            background-color: map-get($map: g.$primary, $key: "regular");
+
+            &--image
+            {
+                width: 100%;
+                height: 90px;
+                object-fit: cover;
+            }
+
+            &--info
+            {
+                padding: 10px;
+                padding-top: 5px;
+
+                font-family: g.$fontSubtitle;
+                color: g.$white;
+
+                position: relative;
+
+                &--name
+                {
+                    font-size: 20px;
+                    font-weight: bold;
+                }
+
+                &--author
+                {
+                    font-size: 15px;
+                    font-style: italic;
+                }
+
+                &--close
+                {
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    right: 20px;
+                    color: g.$white;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 25px;
+                }
+            }
+        }
+    }
+
+    &--error
+    {
+        font-family: g.$fontBody;
+        font-size: 15px;
+        margin-top: 5px;
+    }
+}

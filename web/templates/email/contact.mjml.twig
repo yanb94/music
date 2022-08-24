@@ -1,0 +1,14 @@
+{% extends "base_email.mjml.twig" %}
+
+{% block body %}
+    <mj-text color="#fff" font-size="15px" line-height="30px">
+        Bonjour, <br>
+
+        Vous vener de recevoir un nouveau message. <br><br>
+
+        <b>Nom</b>: {{ lastname }} <br>
+        <b>Prénom</b>: {{ firstname }} <br>
+        <b>Email</b>: {{ userEmail }} <br>
+        <b>Message</b>: {{ message }} <br>
+    </mj-text>
+{% endblock %}

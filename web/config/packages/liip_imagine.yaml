@@ -1,0 +1,62 @@
+# Documentation on how to configure the bundle can be found at: https://symfony.com/doc/current/bundles/LiipImagineBundle/basic-usage.html
+liip_imagine:
+    # valid drivers options include "gd" or "gmagick" or "imagick"
+    driver: "imagick"
+    resolvers:
+        default:
+            web_path: ~
+    filter_sets:
+        cache: ~
+        60_thumbnail:
+            quality : 85
+            filters:
+                thumbnail: { size: [60, 60], mode: outbound }
+                strip: ~
+        100x90_thumbnail:
+            quality : 85
+            filters:
+                thumbnail: { size: [100, 90], mode: outbound }
+                strip: ~
+        120_thumbnail:
+            quality : 85
+            filters:
+                thumbnail: { size: [120, 120], mode: outbound }
+                strip: ~
+        130_thumbnail:
+            quality : 85
+            filters:
+                thumbnail: { size: [130, 130], mode: outbound }
+                strip: ~
+        150_thumbnail:
+            quality : 85
+            filters:
+                thumbnail: { size: [150, 150], mode: outbound }
+                strip: ~
+        200_thumbnail:
+            quality : 85
+            filters:
+                thumbnail: { size: [200, 200], mode: outbound }
+                strip: ~
+        250_thumbnail:
+            quality : 85
+            filters:
+                thumbnail: { size: [250, 250], mode: outbound }
+                strip: ~
+        850x500_thumbnail:
+            quality : 85
+            filters:
+                thumbnail: { size: [850, 500], mode: outbound }
+                strip: ~ 
+        88x44_admin_thumbnail:
+            quality: 85
+            filters:
+                thumbnail: { size: [88, 44], mode: outbound }
+                strip: ~
+        382x255_admin_thumbnail:
+            quality: 85
+            filters:
+                downscale:
+                    max: [382, 255]
+    twig:
+        mode: lazy           
+

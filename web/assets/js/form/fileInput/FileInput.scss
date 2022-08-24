@@ -1,0 +1,41 @@
+@use "@abstractStyle" as g;
+
+.file-input
+{
+
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+
+    label
+    {
+        font-family: g.$fontSubtitle;
+        font-size: 30px;
+        line-height: 35px;
+        margin-bottom: 5px;
+    }
+
+    input
+    {
+        height: 40px;
+        font-size: 25px;
+        font-family: g.$fontBody;
+        width: 100%;
+        border: none;
+        padding: 5px;
+
+        &::placeholder
+        {
+            font-size: 20px;
+            font-family: g.$fontBody;
+            font-style: italic;
+        }
+    }
+
+    &--error
+    {
+        font-family: g.$fontBody;
+        font-size: 15px;
+        margin-top: 5px;
+    }
+}

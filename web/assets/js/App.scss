@@ -1,0 +1,7 @@
+@use "@abstractStyle" as g;
+
+.app
+{
+    background-color: map-get($map: g.$primary, $key: "regular");
+    min-height: calc(100vh + 300px);
+}

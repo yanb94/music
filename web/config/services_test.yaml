@@ -1,0 +1,13 @@
+services:
+  App\Service\ProcessArtistPayout:
+    public: true
+  Liip\ImagineBundle\Service\FilterService:
+    class: App\Tests\Utils\FakeFilterService
+    arguments:
+      - "@liip_imagine.data.manager"
+      - "@liip_imagine.filter.manager"
+      - "@liip_imagine.cache.manager"
+      - "%liip_imagine.webp.generate%"
+      - "%liip_imagine.webp.options%"
+      - "@logger"
+    public: true

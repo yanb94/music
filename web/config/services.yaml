@@ -1,0 +1,107 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
+parameters:
+    noReplyEmail: '%env(NOREPLY_MAIL)%'
+    adminEmail: '%env(ADMIN_MAIL)%'
+    stripePrivateKey: '%env(STRIPE_PRIVATE_API_KEY)%'
+    artistPart: 0.8
+    profit: 0.2
+    paypalClientId: '%env(PAYPAL_CLIENT_ID)%'
+    paypalSecret: '%env(PAYPAL_SECRET)%'
+    container.dumper.inline_factories: true
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+            - '../src/Tests/'
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+
+    App\EventSubscriber\RegistrationSubscriber:
+        tags:
+            - name: 'doctrine.event_subscriber'
+
+    App\EventSubscriber\SongPersistSubscriber:
+        tags:
+            - name: 'doctrine.event_subscriber'
+    
+    App\Service\SendConfirmationEmail:
+        arguments:
+            $noReplyEmail: "%noReplyEmail%"
+    
+    App\Service\SendChangeEmail:
+        arguments:
+            $noReplyEmail: "%noReplyEmail%"
+    
+    App\Service\SendContactMessage:
+        arguments:
+            $adminEmail: "%adminEmail%"
+
+    App\Service\SendContactUser:
+        arguments:
+            $adminEmail: "%adminEmail%"
+
+    App\Service\SendDeleteArtistNotification:
+        arguments:
+            $adminEmail: "%adminEmail%"
+
+    App\Service\SendDeleteSongNotification:
+        arguments:
+            $adminEmail: "%adminEmail%"
+
+    App\Service\SendDeletePlaylistNotification:
+        arguments:
+            $adminEmail: "%adminEmail%"
+    
+    App\Service\SendAddSongNotification:
+        arguments:
+            $adminEmail: "%adminEmail%"
+    
+    App\Service\SendNotPaySubscriptionNotfication:
+        arguments:
+            $adminEmail: "%adminEmail%"
+    
+    App\Service\SendCanceledAfterSubscriptionUnpaid:
+        arguments:
+            $adminEmail: "%adminEmail%"
+
+    App\Service\SendSubscriptionNotification:
+        arguments:
+            $adminEmail: "%adminEmail%"
+    
+    acme_api.event.authentication_success_listener:
+        class: App\EventListener\AuthenticationSuccessListener
+        tags:
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_authentication_success, method: onAuthenticationSuccessResponse }
+    
+    App\Naming\OriginalNamer:
+        public: true
+    
+    index_song_service:
+        class: App\Service\SongIndexable
+
+    index_playlist_service:
+        class: App\Service\PlaylistIndexable
+    
+    App\Serializer\SubscriberContextBuilder:
+        decorates: 'api_platform.serializer.context_builder'
+        arguments: [ '@App\Serializer\SubscriberContextBuilder.inner' ]
+        autoconfigure: false
+    
+    Liip\ImagineBundle\Service\FilterService:
+        alias: "liip_imagine.service.filter"

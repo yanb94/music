@@ -1,0 +1,17 @@
+@use "@abstractStyle" as g;
+
+.member-space
+{
+    margin-top: 100px;
+    padding-top: 20px;
+    padding-bottom: 35px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,250px);
+    justify-content: center;
+    align-items: start;
+    justify-items: center;
+    gap: 40px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+      "baseUrl": "./",
+      "paths": {
+        "@imageBackground/*": ["assets/image/*"],
+        "@abstractStyle/*": ["assets/styles/abstracts/*"],
+        "@mixins/*": ["assets/styles/mixins/*"],
+        "@app/*": ["assets/js/*"]
+      }
+    },
+    "exclude": ["node_modules", "vendor", "public/build"]
+  }

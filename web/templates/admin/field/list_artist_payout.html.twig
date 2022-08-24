@@ -1,0 +1,58 @@
+{% set artist_payouts = field.value.toArray() %}
+
+<div class="list-artist-payout">
+    {% for artist_payout in artist_payouts %}
+        <div class="artist-payout">
+            <div class="artist-payout--tracking-id">
+                <div class="artist-payout--tracking-id--label">
+                    Identifiant du paiement
+                </div>
+                {{ artist_payout.trackingId }}
+            </div>
+            <div class="artist-payout--paypal-id">
+                <div class="artist-payout--paypal-id--label">
+                    Identifiant sur Paypal
+                </div>
+                {{ artist_payout.paypalId }}
+            </div>
+            <div class="artist-payout--status">
+                <div class="artist-payout--status--label">
+                    Status
+                </div>
+                <div class="status-{{ artist_payout.status|lower }}">
+                    {{ payout_status(artist_payout.status) }}
+                </div>
+            </div>
+            <div class="artist-payout--artist">
+                <div class="artist-payout--artist--label">
+                    Artiste
+                </div>
+                {% if artist_payout.artist != null %}
+                    {{ artist_payout.artist.name }}
+                {% else %}
+                    <i style="color:#767676">Non inscrit</i>
+                {% endif %}
+            </div>
+            <div class="artist-payout--month">
+                <div class="artist-payout--month--label">
+                    Mois
+                </div>
+                {{ artist_payout.month }}
+            </div>
+            <div class="artist-payout--amount">
+                <div class="artist-payout--amount--label">
+                    Montant
+                </div>
+                {{ artist_payout.amount / 100 }}€
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('listArtistPayout') }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('listArtistPayout') }}
+{% endblock %}

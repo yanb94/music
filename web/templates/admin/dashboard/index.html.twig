@@ -1,0 +1,120 @@
+{% extends "@EasyAdmin/layout.html.twig" %}
+
+{% block content_title %}Dashboard de Song{% endblock %}
+{% block main %}
+
+    {{ encore_entry_link_tags('admin') }}
+    {{ encore_entry_script_tags('admin') }}
+
+    <div class="dashboard">
+        <div class="dashboard--stats">
+            <div class="dashboard--stats--item">
+                <p class="dashboard--stats--item--title">Chansons</p>
+                <p class="dashboard--stats--item--nb">{{ nbSongs }}</p>
+            </div>
+
+            <div class="dashboard--stats--item">
+                <p class="dashboard--stats--item--title">Playlists</p>
+                <p class="dashboard--stats--item--nb">{{ nbPlaylists }}</p>
+            </div>
+
+            <div class="dashboard--stats--item">
+                <p class="dashboard--stats--item--title">Artistes</p>
+                <p class="dashboard--stats--item--nb">{{ nbArtists }}</p>
+            </div>
+
+            <div class="dashboard--stats--item">
+                <p class="dashboard--stats--item--title">Utilisateurs</p>
+                <p class="dashboard--stats--item--nb">{{ nbUsers }}</p>
+            </div>
+        </div>
+        <div class="dashboard--month-stats-title">Revenus du mois</div>
+        <div class="dashboard--stats">
+            <div class="dashboard--stats--item">
+                <p class="dashboard--stats--item--title">Bénéfice Brut</p>
+                <p class="dashboard--stats--item--nb">{{ profit }}€</p>
+            </div>
+
+            <div class="dashboard--stats--item">
+                <p class="dashboard--stats--item--title">Part des artistes</p>
+                <p class="dashboard--stats--item--nb">{{ artistPart }}€</p>
+            </div>
+
+            <div class="dashboard--stats--item">
+                <p class="dashboard--stats--item--title">TVA</p>
+                <p class="dashboard--stats--item--nb">{{ vat }}€</p>
+            </div>
+        </div>
+        <div class="dashboard--most-view">
+            <div class="dashboard--most-view--item">
+                <h2> Chansons les plus écoutées hier </h2>
+                <div class="dashboard--most-view--item--rows">
+                    {% for best_song in bestSongs %}
+                        {% set see_url = ea_url().setController('App\\Controller\\Admin\\SongCrudController').setAction('detail').setEntityId(best_song.song.id) %}
+                        <div class="dashboard--most-view--item--rows--row">
+                            <img src="{{ vich_uploader_asset(best_song.song, 'imageFile', 'App\\Entity\\Song') }}" alt="{{ best_song.song.name }}" class="dashboard--most-view--item--rows--row--image">
+                            <div class="dashboard--most-view--item--rows--row--info">
+                                <h3 class="dashboard--most-view--item--rows--row--info--title">{{ best_song.song.name }}</h3>
+                                <p class="dashboard--most-view--item--rows--row--info--author">De {{ best_song.song.author.name }}</p>
+                                <p class="dashboard--most-view--item--rows--row--info--views">{{ best_song.nbViews }} vues</p>
+                                <a href="{{ see_url }}" class="action-new btn btn-primary dashboard--most-view--item--rows--row--info--link">Voir</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="dashboard--most-view--item">
+                <h2> Playlists les plus écoutées hier </h2>
+                <div class="dashboard--most-view--item--rows">
+                    {% for best_playlist in bestPlaylists %}
+                        {% set see_url = ea_url().setController('App\\Controller\\Admin\\PlaylistCrudController').setAction('detail').setEntityId(best_playlist.playlist.id) %}
+                        <div class="dashboard--most-view--item--rows--row">
+                            <img src="{{ vich_uploader_asset(best_playlist.playlist, 'imageFile', 'App\\Entity\\Playlist') }}" alt="{{ best_playlist.playlist.name }}" class="dashboard--most-view--item--rows--row--image">
+                            <div class="dashboard--most-view--item--rows--row--info">
+                                <h3 class="dashboard--most-view--item--rows--row--info--title">{{ best_playlist.playlist.name }}</h3>
+                                <p class="dashboard--most-view--item--rows--row--info--author">De {{ best_playlist.playlist.author.username }}</p>
+                                <p class="dashboard--most-view--item--rows--row--info--views">{{ best_playlist.nbViews }} vues</p>
+                                <a href="{{ see_url }}" class="action-new btn btn-primary dashboard--most-view--item--rows--row--info--link">Voir</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="dashboard--row">
+            <div class="dashboard--item">
+                <h2> Montant des abonnements </h2>
+                <div class="dashboard--item--canvas-cont">
+                    <canvas id="monthlyInvoice" width="100%" height="100%"
+                        data-datas="{{ invoicesString }}"
+                        data-labels="{{ monthInvoiceString }}"
+                    >
+                    </canvas>
+                </div>
+                <a href="{{ linkInvoice }}" class="action-new btn btn-primary">Voir les factures</a>
+            </div>
+            <div class="dashboard--item">
+                <h2> Nombre d'écoute de chansons </h2>
+                <div class="dashboard--item--canvas-cont">
+                    <canvas id="dailyViewSong" width="100%" height="100%"
+                        data-datas="{{ view }}"
+                        data-labels="{{ date }}"
+                    >
+                    </canvas>
+                </div>
+                <a href="{{ songLink }}" class="action-new btn btn-primary">Voir les chansons</a>
+            </div>
+            <div class="dashboard--item">
+                <h2> Nombre d'écoute de playlists </h2>
+                <div class="dashboard--item--canvas-cont">
+                    <canvas id="dailyViewPlaylist" width="100%" height="100%"
+                        data-datas="{{ viewPlaylist }}"
+                        data-labels="{{ datePlaylist }}"
+                    >
+                    </canvas>
+                </div>
+                <a href="{{ playlistLink }}" class="action-new btn btn-primary">Voir les playlists</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

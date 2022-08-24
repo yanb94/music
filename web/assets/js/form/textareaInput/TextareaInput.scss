@@ -1,0 +1,41 @@
+@use "@abstractStyle" as g;
+
+.input-textarea
+{
+
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+
+    label
+    {
+        font-family: g.$fontSubtitle;
+        font-size: 30px;
+        line-height: 35px;
+        margin-bottom: 5px;
+    }
+
+    textarea
+    {
+        box-shadow: 0 3px 6px map-get($map: g.$primary, $key: "dark");
+        font-size: 25px;
+        font-family: g.$fontBody;
+        width: 100%;
+        border: none;
+        padding: 5px;
+
+        &::placeholder
+        {
+            font-size: 20px;
+            font-family: g.$fontBody;
+            font-style: italic;
+        }
+    }
+
+    &--error
+    {
+        font-family: g.$fontBody;
+        font-size: 15px;
+        margin-top: 5px;
+    }
+}

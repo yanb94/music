@@ -1,0 +1,68 @@
+@use "@abstractStyle" as g;
+
+.my-follow-content
+{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+
+    &--content
+    {
+        max-width: 850px;
+        width: 90%;
+        padding-top: 115px;
+        padding-bottom: 75px;
+
+        &--title
+        {
+            font-family: g.$fontTitle;
+            font-size: 35px;
+            font-weight: bold;
+            color: g.$white;
+            text-align: center;
+
+            border-bottom: 2px solid g.$white;
+
+            @media (min-width: map-get(g.$breakPoint,'S')) {
+                text-align: left;
+                font-size: 45px;    
+            }
+        }
+
+        &--menu
+        {
+            color: g.$white;
+            display: grid;
+            margin-top: 10px;
+            grid-template-columns: auto;
+
+            @media (min-width: map-get(g.$breakPoint,'S')) {
+                grid-row: auto; 
+                grid-template-columns: repeat(auto-fill,150px);
+                column-gap: 5px;
+            }
+
+            &--item
+            {
+                font-family: g.$fontSubtitle;
+                font-size: 25px;
+                cursor: pointer;
+                font-weight: normal;
+
+                &.selected
+                {
+                    span
+                    {
+                        border-bottom: 2px solid g.$white;
+                    }
+                }
+            }
+        }
+
+        &--onglets
+        {
+            color: g.$white;
+        }
+    }
+}

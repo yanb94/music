@@ -1,0 +1,90 @@
+@use "@abstractStyle" as g;
+
+.checkbox-input
+{
+    display: grid;
+    grid-template-columns: 60px auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: "checkbox label" "error error";
+    position: relative;
+    column-gap: 10px;
+    margin-top: 30px;
+
+    input
+    {
+        opacity: 0;
+    }
+
+
+    label
+    {
+        color: g.$white;
+        font-family: g.$fontBody;
+        font-size: 20px;
+        line-height: 30px;
+        grid-area: label;
+
+        &::before
+        {
+            position: absolute;
+            content: "";
+            background-color: g.$white;
+            border-radius: 10px;
+            height: 30px;
+            width: 100%;
+            grid-area: checkbox;
+            display: block;
+            left: 0;
+            // margin: 5px 0;
+            transition: ease .3s;
+        }
+
+        &::after
+        {
+            position: absolute;
+            content: "";
+            background-color: map-get($map: g.$primary, $key: "light");
+            border-radius: 10px;
+            height: 30px;
+            width: 30px;
+            grid-area: checkbox;
+            display: block;
+            left: 0;
+            top: -2px;
+            // margin: 5px 0;
+            border: 2px solid g.$white;
+
+            transition: ease .3s;
+        }
+    }
+
+    input:checked + label
+    {
+        &::before
+        {
+            background-color: map-get($map: g.$secondary, $key: 'regular');
+        }
+
+        &::after
+        {
+            transform: translateX(30px);
+        }
+    }
+
+    input:focus + label
+    {
+        &::before
+        {
+            box-shadow:  0 6px 12px map-get($map: g.$primary, $key: "dark");
+        }
+    }
+
+    &--error
+    {
+        font-family: g.$fontBody;
+        font-size: 15px;
+        margin-top: 5px;
+
+        grid-area: error;
+    }
+}

@@ -1,0 +1,13 @@
+{% extends "base_email.mjml.twig" %}
+
+{% block body %}
+    <mj-text color="#fff" font-size="15px" line-height="20px">
+        Bonjour <b>{{ lastname }} {{ firstname }}</b>,<br/> <br/>
+
+        Nous sommes au regret de vous annoncer que les administrateurs de Song ont procéder a la suppression de votre chanson "{{ songName }}". <br/><br/>
+
+        Cordialement, <br/><br/>
+
+        Song <br/><br/>
+    </mj-text>
+{% endblock %}

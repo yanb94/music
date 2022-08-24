@@ -1,0 +1,47 @@
+@use "@abstractStyle" as g;
+
+.card-menu-member
+{
+    height: 250px;
+    width: 250px;
+    background-color: map-get($map: g.$primary, $key: "light");
+    box-shadow: 0 3px 6px map-get($map: g.$primary, $key: "dark");
+
+    display: grid;
+    grid-template-rows: 160px auto;
+    text-align: center;
+
+    transition: ease .6s;
+    
+    &--icon
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: g.$white;
+        font-size: 135px;
+    }
+
+    &--name
+    {
+        font-family: g.$fontSubtitle;
+        font-weight: bold;
+        font-size: 25px;
+        color: g.$white;
+        padding: 0 15px;
+        line-height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &:hover
+    {
+        background-color: darken($color: map-get($map: g.$primary, $key: "light"), $amount: 10);
+    }
+
+    &:active
+    {
+        background-color: lighten($color: map-get($map: g.$primary, $key: "light"), $amount: 10);
+    }
+}

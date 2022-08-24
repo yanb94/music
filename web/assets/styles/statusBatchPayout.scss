@@ -1,0 +1,15 @@
+$listStatus: ('success':#007813,'denied':#9f111f,'pending':#050074,'processing':#050074,'canceled':#9f111f,'created':#744900);
+
+@each $status, $color in $listStatus {
+    .status-#{$status}
+    {
+        color: #FFF!important;
+        background-color: $color!important;
+        text-align: center;
+        display: inline-block;
+        border-radius: 5px;
+        padding: 5px 10px;
+        font-size: 15px;
+        font-weight: bold;
+    }
+}

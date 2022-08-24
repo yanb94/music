@@ -1,0 +1,5 @@
+{% set base_path = field.customOptions.get('basePath') %}
+{% set file = attribute(entity.instance, field.property) %}
+{% set full_path = base_path ~ file %}
+
+<audio controls style="width:100%;max-width:600px" src="{{ full_path }}" controlsList="nodownload"></audio>

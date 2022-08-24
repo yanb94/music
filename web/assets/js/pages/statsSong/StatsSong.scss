@@ -1,0 +1,164 @@
+@use "@abstractStyle" as g;
+
+.stats-song
+{
+    display: flex;
+    justify-content: center;
+    padding-top: 75px;
+    padding-bottom: 20px;
+
+    min-height: 100vh;
+
+    &--content
+    {
+        max-width: 850px;
+        width: 90%;
+        padding-top: 10px;
+
+        &--loading
+        {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 30px 10px;
+        }
+
+        &--error
+        {
+            color: g.$white;
+            font-size: 25px;
+            font-family: g.$fontSubtitle;
+            background-color: map-get($map: g.$primary, $key: 'light');
+            box-shadow: 0 2px 4px map-get($map: g.$primary, $key: 'dark');
+            margin: auto;
+            margin-top: 40px;
+            max-width: 768px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        &--previous
+        {
+            color: g.$white;
+            margin-top: 20px;
+            margin-bottom: 5px;
+            font-size: 25px;
+            font-family: g.$fontSubtitle;
+
+            a
+            {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            svg
+            {
+                font-size: 30px;
+            }
+        }
+
+        &--card-song
+        {
+            display: grid;
+            grid-template-rows: auto auto;
+            width: 100%;
+            box-shadow: 0px 3px 6px g.$black;
+
+            @media (min-width: map-get(g.$breakPoint,'S')) {
+                grid-template-rows: auto;
+                grid-template-columns: 250px auto;
+                height: 250px;
+            }
+
+            &--cont-image
+            {
+                display: grid;
+                grid-template-columns: auto;
+                grid-template-rows: auto;
+                align-items: center;
+                justify-items: center;
+
+                &--image
+                {
+                    max-width: 350px;
+                    max-height: 250px;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    grid-column: 1;
+                    grid-row: 1;
+                }
+            }
+            
+
+            &--infos
+            {
+                background-color: map-get($map: g.$primary, $key: "light");
+                color: g.$white;
+                padding: 15px;
+                position: relative;
+
+                @media (min-width: map-get(g.$breakPoint,'S')) {
+                    padding: 10px 15px;
+                }
+
+                &--title
+                {
+                    font-family: g.$fontTitle;
+                    text-align: center;
+                    font-weight: bold;
+                    font-size: 40px;
+
+                    @media (min-width: map-get(g.$breakPoint,'S')) {
+                        text-align: left;
+                    }
+                }
+
+                &--author
+                {
+                    font-family: g.$fontSubtitle;
+                    font-size: 20px;
+                    font-style: italic;
+                    text-align: center;
+
+                    @media (min-width: map-get(g.$breakPoint,'S')) {
+                        text-align: left;
+                    }
+                }
+
+                &--duration
+                {
+                    
+                    font-family: g.$fontSubtitle;
+                    font-size: 15px;
+                    font-style: italic;
+                    text-align: center;
+
+                    @media (min-width: map-get(g.$breakPoint,'S')) {
+                        text-align: left;
+                        position: absolute;
+                        bottom: 10px;
+                        right: 15px;
+                    }
+                }
+            }
+        }
+
+        &--title-graph
+        {
+            font-family: g.$fontSubtitle;
+            font-size: 25px;
+            color: g.$white;
+            margin-top: 20px;
+        }
+
+        &--graph
+        {
+            background-color: g.$white;
+            padding: 20px;
+            box-shadow: 0 3px 6px g.$black;
+        }
+    }
+}

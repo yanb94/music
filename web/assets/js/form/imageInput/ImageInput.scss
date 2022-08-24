@@ -1,0 +1,78 @@
+@use "@abstractStyle"as g;
+
+.input-image {
+
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+
+    label {
+        --backgroundBefore: none;
+        --afterContent: "'+'";
+        font-family: g.$fontSubtitle;
+        font-size: 30px;
+        line-height: 35px;
+        margin-bottom: 5px;
+        height: 140px;
+        width: 100px;
+
+        position: relative;
+
+        &:hover {
+            &::before {
+                box-shadow: 0px 0px 0px map-get($map: g.$primary, $key: "regular"), inset 1px 1px 6px map-get($map: g.$primary, $key: "regular");
+            }
+        }
+
+        &::before {
+            content: "";
+            transition: .5s;
+            position: absolute;
+            background-image: var(--backgroundBefore);
+            background-size: cover;
+            background-position: center;
+            height: 85px;
+            border: 6px solid g.$white;
+            width: 85px;
+            bottom: 0;
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 3px 3px 6px map-get($map: g.$primary, $key: "regular");
+
+
+        }
+
+        &::after {
+            content: var(--afterContent, "+");
+            position: absolute;
+            font-size: 60px;
+            bottom: 38px;
+            left: 32px;
+        }
+    }
+
+    input {
+        height: 40px;
+        box-shadow: 0 3px 6px map-get($map: g.$primary, $key: "dark");
+        font-size: 25px;
+        font-family: g.$fontBody;
+        width: 100%;
+        border: none;
+        padding: 5px;
+        display: none;
+
+        &::placeholder {
+            font-size: 20px;
+            font-family: g.$fontBody;
+            font-style: italic;
+        }
+    }
+
+    &--error {
+        font-family: g.$fontBody;
+        font-size: 15px;
+        margin-top: 5px;
+    }
+}

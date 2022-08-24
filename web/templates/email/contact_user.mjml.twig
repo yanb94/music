@@ -1,0 +1,7 @@
+{% extends "base_email.mjml.twig" %}
+
+{% block body %}
+    <mj-text color="#fff" font-size="15px" line-height="25px">
+        {{ message|raw }}
+    </mj-text>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+{% form_theme form '@EasyAdmin/crud/form_theme.html.twig' %}
+
+{% set url = ea_url().setController('App\\Controller\\Admin\\UserCrudController').setAction('index') %}
+
+{% block page_actions %}
+    <a class="btn btn-secondary" href="{{ url }}">Retour</a>
+{% endblock %}
+
+{% block page_title %}
+    Contacter {{ user.username }}
+{% endblock %}
+
+{% block page_content %}
+    {{ form(form) }}
+{% endblock %}

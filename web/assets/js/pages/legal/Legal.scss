@@ -1,0 +1,83 @@
+@use "@abstractStyle" as g;
+@use "@mixins/elements.scss" as element;
+@use "@mixins/page-card.scss" as pageCard;
+
+.legal
+{
+    @include element.oneColumnWithBackgroundImage(
+        $image: "~@imageBackground/legal.jpg",
+        $backgroundColor: map-get(g.$primary,"regular"), 
+        $backgroundOpacity: 0.98
+    )
+    {
+        min-height: 100vh;
+
+        &--content
+        {
+            padding-top: 75px;
+            padding-bottom: 75px;
+
+            display: flex;
+            justify-content: center;
+
+            &--document
+            {
+                padding: 0 10px;
+                padding-top: 30px;
+                max-width: 800px;
+                width: 90%;
+                color: g.$white;
+
+                &--title
+                {
+                    text-align: center;
+                    font-family: g.$fontTitle;
+                    font-weight: bold;
+                    font-size: 50px;
+                    margin-bottom: 20px;
+                }
+
+                &--content
+                {
+                    h2
+                    {
+                        font-family: g.$fontSubtitle;
+                        font-size: 40px;
+                        font-weight: normal;
+                    }
+
+                    h3
+                    {
+                        font-family: g.$fontSubtitle;
+                        font-size: 25px;
+                        padding: 10px 0;
+                    }
+
+                    p
+                    {
+                        font-size: 20px;
+                        font-family: g.$fontBody;
+                        line-height: 35px;
+                        margin-bottom: 15px;
+                    }
+                }
+            }
+
+        }
+
+        &--content.loading, &--content.error
+        {
+            align-items: center;
+        }
+
+    }
+}
+
+.card-error-legal
+{
+    @include pageCard.card(){
+        @include pageCard.title();
+        @include pageCard.desc();
+        @include pageCard.btn-cont();
+    };
+}

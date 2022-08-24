@@ -1,0 +1,20 @@
+@use "@abstractStyle" as g;
+@use "@mixins/elements.scss" as element;
+@use "@mixins/form.scss" as form;
+
+.change-email
+{
+    &--head
+    {
+        @include element.twoColumnContainer($height: auto,$leftElemSize: auto , $rightElemSize: minmax(600px,55%))
+        {
+            min-height: 100vh;
+            color: g.$white;
+
+            @include element.twoColumnImage($image:"~@imageBackground/info-edit.jpg", $position: "left");
+            @include element.twoColumnContent(map-get(g.$primary,"regular"), $position: "right"){
+                @include form.formCard();
+            }
+        }
+    }
+}

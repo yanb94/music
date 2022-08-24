@@ -1,0 +1,64 @@
+@use "@abstractStyle" as g;
+@use "@mixins/elements.scss" as element;
+@use "@mixins/form.scss" as form;
+
+.about
+{
+    &--head
+    {
+        @include element.twoColumnContainer($height: auto,$leftElemSize: auto , $rightElemSize: minmax(600px,55%))
+        {
+            min-height: 100vh;
+            color: g.$white;
+
+            @include element.twoColumnImage($image:"~@imageBackground/about-head.jpg", $position: "left");
+            @include element.twoColumnContent(map-get(g.$primary,"regular"), $position: "right"){
+                
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                padding-top: 75px;
+                padding-bottom: 75px;
+                
+                &--container
+                {
+                    width: clamp(300px, 90%, 700px);
+                    padding: 0 5px;
+                }
+
+                &--title
+                {
+                    font-family: g.$fontTitle;
+                    font-size: 60px;
+                    font-weight: bold;
+                    text-align: center;
+
+                    @media (min-width: map-get($map: g.$breakPoint, $key: "S")) {
+                        text-align: left;
+                    }
+                }
+
+                &--subTitle
+                {
+                    margin-bottom: 10px;
+                    font-family: g.$fontSubtitle;
+                    font-size: 30px;
+                    line-height: 40px;
+                    text-align: center;
+
+                    @media (min-width: map-get($map: g.$breakPoint, $key: "S")) {
+                        text-align: left;
+                    }
+                }
+
+                &--text
+                {
+                    font-family: g.$fontBody;
+                    font-size: 20px;
+                    line-height: 35px;
+                }
+            }
+        }
+    }
+}

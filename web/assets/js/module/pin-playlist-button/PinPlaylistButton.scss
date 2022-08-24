@@ -1,0 +1,64 @@
+@use "@abstractStyle" as g;
+
+.margin
+{
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.pin-playlist-button
+{
+    --width: 130px;
+    --height: 40px;
+
+    --fontSizeButton: 20px;
+    --fontSizeLoading: 20px;
+    --fontSizeError: 18px; 
+    --fontSizeUnfollow: 18px;
+
+    &--button
+    {
+        width: var(--width)!important;
+        height: var(--height)!important;
+        color: g.$white;
+
+        @extend .margin;
+
+        font-size: var(--fontSizeButton)!important;
+
+        &.unfollow
+        {
+            font-size: var(--fontSizeUnfollow)!important;
+        }
+
+        &--loading, &--error
+        {
+            width: var(--width)!important;
+            height: var(--height)!important;
+            color: g.$white;
+            
+            @extend .margin;
+
+            font-size: var(--fontSizeLoading);
+            border: 1px solid map-get($map: g.$primary, $key: 'light');
+            background-color: map-get($map: g.$primary, $key: 'regular');
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        &--error
+        {
+            font-size: var(--fontSizeError)!important;
+            color: g.$white;
+            
+            span
+            {
+                margin-left: 5px;
+                font-family: g.$fontSubtitle;
+            }
+        }
+
+    }
+}

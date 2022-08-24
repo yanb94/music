@@ -1,0 +1,26 @@
+@use "@abstractStyle" as g;
+
+@mixin responsiveImage($image)
+{
+    $image: str-slice($string: $image, $start-at: 19);
+    $imageOriginalPath: "./../../image/";
+    $imageResponsivePath: "./../../image_responsive/";
+
+    background-image: url($imageResponsivePath + "S/" + $image);
+
+    @media (min-width: map-get($map: g.$breakPoint, $key: "M")) {
+        background-image: url($imageResponsivePath + "M/" + $image);
+    }
+
+    @media (min-width: map-get($map: g.$breakPoint, $key: "L")) {
+        background-image: url($imageResponsivePath + "L/" + $image);
+    }
+
+    @media (min-width: map-get($map: g.$breakPoint, $key: "XL")) {
+        background-image: url($imageResponsivePath + "XL/" + $image);
+    }
+
+    @media (min-width: 1600px) {
+        background-image: url($imageOriginalPath + $image);
+    }
+}

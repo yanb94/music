@@ -1,0 +1,19 @@
+@use "@mixins/button.scss" as button;
+
+.button
+{
+    &-primary
+    {
+        @include button.button($theme: "primary");
+    }
+
+    &-primary_light
+    {
+        @include button.button($theme: "primary_light");
+    }
+
+    &-secondary
+    {
+        @include button.button($theme: "secondary");
+    }
+}

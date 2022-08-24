@@ -1,0 +1,70 @@
+@use "@abstractStyle" as g;
+
+.song-item
+{
+    --size: 250px;
+
+    width: var(--size);
+    color: g.$white;
+
+    &--cont-image
+    {
+        height: var(--size);
+        width: var(--size);
+        position: relative;
+        box-shadow: 0 3px 6px map-get($map: g.$primary, $key: "dark");
+        overflow: hidden;
+        
+        &--image
+        {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: ease .7s;
+
+            &:hover
+            {
+                transform: scale(1.1);
+            }
+        }
+
+        &--duration
+        {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+
+            padding: 5px;
+
+            font-family: g.$fontSubtitle;
+            font-size: 15px;
+            font-weight: bold;
+            background-color: map-get($map: g.$primary, $key: "light");
+        }
+    }
+
+    &--info
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        margin-top: 3px;
+
+        &--name
+        {
+            font-size: 20px;
+            font-weight: bold;
+            font-family: g.$fontSubtitle;
+        }
+
+        &--date
+        {
+            font-size: 15px;
+            font-style: italic;
+            font-family: g.$fontSubtitle;
+            margin-top: -6px;
+        }
+    }
+}

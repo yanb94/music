@@ -1,0 +1,66 @@
+@use "@abstractStyle" as g;
+
+.radio-input
+{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+
+    label
+    {
+        font-family: g.$fontSubtitle;
+        font-size: 30px;
+    }
+
+    &--cont
+    {
+        display: grid;
+        grid-template-columns: repeat(auto-fill,90px);
+        column-gap: 20px;
+
+        &--item
+        {
+            position: relative;
+            input
+            {
+                position: absolute;
+                opacity: 0;
+            }
+
+            label
+            {
+                background-color: g.$white;
+                color: map-get($map: g.$primary, $key: "dark");
+                font-size: 20px;
+                font-family: g.$fontBody;
+                height: 45px;
+                width: 90px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                box-shadow: 0 3px 6px map-get($map: g.$primary, $key: "dark");
+
+                transition: .3s;
+            }
+
+            input:checked + label
+            {
+                background-color: map-get($map: g.$primary, $key: "regular");
+                color: g.$white;
+            }
+
+            input:focus + label
+            {
+                box-shadow: none;
+            }
+        }
+    }
+
+    &--error
+    {
+        font-family: g.$fontBody;
+        font-size: 15px;
+        margin-top: 5px;
+    }
+}

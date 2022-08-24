@@ -1,0 +1,38 @@
+@use "@abstractStyle" as g;
+
+.birthdate-input
+{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+
+    label
+    {
+        font-family: g.$fontSubtitle;
+        font-size: 30px;
+    }
+
+    &--cont
+    {
+        display: grid;
+        grid-template-columns: 50px 120px 80px;
+        column-gap: 10px;
+
+        .day,.month,.year
+        {
+            height: 40px;
+            font-family: g.$fontBody;
+            font-size: 20px;
+            border-radius: 3px;
+            box-shadow: 0 3px 6px map-get($map: g.$primary, $key: "dark");
+        }
+    }
+
+    &--error
+    {
+        font-family: g.$fontBody;
+        font-size: 15px;
+        margin-top: 5px;
+    }
+    
+}

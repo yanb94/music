@@ -1,0 +1,11 @@
+<div class="status-{{ get_class_batch_payout(entity.instance.status) }}">
+    {{ show_status_artist_batch_payout(entity.instance.status) }}
+</div>
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('statusBatchPayout') }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('statusBatchPayout') }}
+{% endblock %}

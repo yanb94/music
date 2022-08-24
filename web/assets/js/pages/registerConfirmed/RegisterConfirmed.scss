@@ -1,0 +1,13 @@
+@use "@abstractStyle" as g;
+@use "@mixins/page-card.scss" as pageCard;
+
+.register-confirmed
+{
+    @include pageCard.pageCard(){
+        @include pageCard.card(){
+            @include pageCard.title();
+            @include pageCard.desc();
+            @include pageCard.btn-cont();
+        };
+    };
+}

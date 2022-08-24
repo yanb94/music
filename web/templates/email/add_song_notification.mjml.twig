@@ -1,0 +1,15 @@
+{% extends "base_email.mjml.twig" %}
+
+{% block body %}
+
+    <mj-text color="#fff" font-size="15px" line-height="25px">
+        Bonjour <b>{{ lastname }} {{ firstname }}</b>,<br/><br/>
+
+        Nous vous informons que <b>{{ artist_name }}</b> a publié une nouvelle chanson <b>{{ song_name }}</b>.
+        Pour l'écouter dès maintenant veuillez cliquer sur le boutton ci-dessous
+    </mj-text>
+    <mj-button font-size="20px" href="{{ app.request.getSchemeAndHttpHost() }}/song/{{ slug }}" target="_blank" background-color="#00600f">
+        Voir la chanson
+    </mj-button>
+
+{% endblock %}

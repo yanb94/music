@@ -1,0 +1,29 @@
+@use "@abstractStyle" as g;
+
+.notification
+{
+    display: none;
+    z-index:9999999999999999999999;
+    background-color: map-get($map: g.$secondary, $key: "regular");
+    font-size: 25px;
+    font-family: g.$fontSubtitle;
+    color: g.$white;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+    padding: 15px;
+
+    &--close
+    {
+        position: absolute;
+        top: 0;
+        right: 10px;
+    }
+
+    &.open
+    {
+        display: block;
+    }
+}

@@ -1,0 +1,101 @@
+$listStatus: (
+'success': #007813,
+'failed': #9f111f,
+'pending': #050074,
+'unclaimed': #050074,
+'returned': #744900,
+'onhold': #050074,
+'blocked': #9f111f,
+'refunded': #744900,
+'refersed': #744900,
+'created': #744900,
+'denied': #9f111f,
+'canceled': #9f111f
+);
+
+@each $status, $color in $listStatus {
+    .status-#{$status}
+    {
+        color: #FFF!important;
+        background-color: $color!important;
+        text-align: center;
+        display: inline-block;
+        border-radius: 5px;
+        padding: 5px 10px;
+        font-size: 15px;
+        font-weight: bold;
+    }
+}
+
+.list-artist-payout
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,250px);
+    grid-auto-flow: row;
+    row-gap: 25px;
+    padding: 20px;
+}
+
+.artist-payout
+{
+    box-shadow: 2px 2px 6px #bdbdbd;
+    border-radius: 5px;
+    display: grid;
+    grid-template-rows: repeat(6,auto);
+    width: 200px;
+    text-align: center;
+    padding: 15px;
+    row-gap: 15px;
+
+    &--tracking-id
+    {
+        word-break: break-all;
+
+        &--label
+        {
+            font-weight: bold;
+        }
+    }
+
+    &--paypal-id
+    {
+        &--label
+        {
+            font-weight: bold;
+        }
+    }
+
+    &--status
+    {
+        &--label
+        {
+            font-weight: bold;
+        }
+    }
+
+    &--amount
+    {
+        font-size: 20px;
+        
+        &--label
+        {
+            font-weight: bold;
+        }
+    }
+
+    &--artist
+    {
+        &--label
+        {
+            font-weight: bold;
+        }
+    }
+
+    &--month
+    {
+        &--label
+        {
+            font-weight: bold;
+        }
+    }
+}

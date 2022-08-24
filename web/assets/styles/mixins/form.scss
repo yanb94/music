@@ -1,0 +1,79 @@
+@use "@abstractStyle" as g;
+
+@mixin formCard(){
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 10px;
+    padding-top: 75px;
+    padding-bottom: 75px;
+
+    &--container
+    {
+        margin-top: 20px;
+        padding: 20px 5px;
+        background-color: map-get($map: g.$primary, $key: "light");
+
+        min-width: 280px;
+        width: 100%;
+        max-width: 550px;
+
+        box-shadow: 0 3px 6px map-get($map: g.$primary, $key: "dark");
+
+        &--title
+        {
+            font-size: 50px;
+            font-weight: bold;
+            font-family: g.$fontTitle;
+            text-align: center;
+        }
+
+        &--previous
+        {
+            font-size: 30px;
+            margin-left: 10px;
+        }
+
+        &--form
+        {
+            padding: 0 10px;
+            margin-top: 5px;
+
+            &--cont-button
+            {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                margin-top: 20px;
+            }
+
+            &--error
+            {
+                padding: 20px;
+                font-family: g.$fontSubtitle;
+                font-size: 20px;
+                line-height: 30px
+            }
+        }
+
+        &--cont-loader
+        {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        &--error
+        {
+            padding: 20px;
+            font-family: g.$fontSubtitle;
+            font-size: 25px;
+            line-height: 30px
+        }
+    }
+
+    @content;
+}

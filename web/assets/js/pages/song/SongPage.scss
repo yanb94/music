@@ -1,0 +1,366 @@
+@use "@abstractStyle" as g;
+
+.song-page
+{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+
+    &--content
+    {
+        max-width: 850px;
+        width: 90%;
+
+        padding-top: 115px;
+        padding-bottom: 75px;
+
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        &--loading
+        {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 190px);
+        }
+
+        &--player
+        {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            @media (min-width: map-get(g.$breakPoint, 'S')) {
+                height: 350px;
+            }
+
+            @media (min-width: map-get(g.$breakPoint, 'M')) {
+                height: 500px;
+            }
+
+            &--image
+            {
+                position: absolute;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                z-index: 1;
+            }
+
+            &--button
+            {
+                border-radius: 100%;
+                background-color: map-get($map: g.$primary, $key: 'light');
+                height: 100px;
+                width: 100px;
+                margin-bottom: 60px;
+                inset: 0;
+                z-index: 2;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                color: g.$white;
+
+                cursor: pointer;
+
+                box-shadow: 0px 0px 5px map-get($map: g.$primary, $key: "regular");
+
+                @media (min-width: map-get(g.$breakPoint, 'S')) {
+                    height: 150px;
+                    width: 150px;
+                }
+
+                & > *
+                {
+                    font-size: 50px;
+                    
+
+                    @media (min-width: map-get(g.$breakPoint, 'S')) {
+                        font-size: 75px;
+                    }
+                }
+
+                &--play
+                {
+                    margin-left: 10px;
+                }
+
+                transition: ease .5s;
+
+                &:hover
+                {
+                    box-shadow: none;
+
+                }
+            }
+
+            &--bar
+            {
+                position: absolute;
+                z-index: 2;
+                bottom: 0;
+                width: 100%;
+                height: 60px;
+                background-color: map-get($map: g.$primary, $key: 'light');
+
+                display: grid;
+                grid-template-columns: 100px auto 130px;
+                grid-template-rows: auto auto;
+
+                align-content: center;
+                align-items: center;
+                row-gap: 10px;
+                padding: 5px;
+
+                &--actions
+                {
+                    color: g.$white;
+                    font-size: 25px;
+                    display: flex;
+                    grid-row: 2;
+                    grid-column: 1;
+
+                    &--play,&--stop
+                    {
+                        background-color: initial;
+                        border: none;
+                        color: inherit;
+                        font-size: inherit;
+                    }
+
+                    &--play
+                    {
+                        margin-right: 5px;
+                        margin-left: 5px;
+                    }
+                }
+
+                &--progress
+                {
+                    overflow: hidden;
+                    width: 100%;
+                    background-color: g.$white;
+                    border-radius: 20px;
+                    height: 10px;
+                    grid-row: 1;
+                    grid-column: 1 / 4;
+
+                    &--value
+                    {
+                        width: 0%;
+                        height: 100%;
+                        background-color: map-get($map: g.$secondary, $key: 'regular');
+                    }
+                }
+
+                &--time
+                {
+                    font-size: 20px;
+                    font-family: g.$fontSubtitle;
+                    color: g.$white;
+                    grid-row: 2;
+                    grid-column: 2;
+                    display: flex;
+                    align-items: center;
+                }
+
+                &--volume
+                {
+                    color: g.$white;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end;
+                    grid-row: 2;
+                    grid-column: 3;
+
+                    &--button
+                    {
+                        background-color: initial;
+                        border: none;
+                        color: inherit;
+                        font-size: 20px;
+                    }
+
+                    &--bar
+                    {
+                        background-color: g.$black;
+                        width: 60px;
+                        height: 5px;
+
+                        &--value
+                        {
+                            width: 0%;
+                            background-color: g.$white;
+                            height: 100%;
+                        }
+                    }
+                }
+            }
+
+            &--not-allow
+            {
+                background-color: map-get($map: g.$primary, $key: 'light');
+                inset: 0;
+                z-index: 2;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+
+                color: g.$white;
+
+                box-shadow: 0px 0px 5px map-get($map: g.$primary, $key: "regular");
+
+                padding: 20px;
+
+                &--msg
+                {
+                    font-size: 25px;
+                    font-family: g.$fontSubtitle;
+                    color: g.$white;
+                    margin-bottom: 15px;
+                    text-align: center;
+                    font-weight: bold;
+                }
+
+                &--cont-button
+                {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+        }
+
+        &--info
+        {
+            color: g.$white;
+            text-align: left;
+            width: 100%;
+            margin-top: 20px;
+            position: relative;
+            border-bottom: 1px solid g.$white;
+            padding-bottom: 5px;
+
+            &--title
+            {
+                font-family: g.$fontTitle;
+                font-weight: bold;
+                font-size: 30px;
+
+                @media (min-width: map-get(g.$breakPoint,'S')) {
+                    font-size: 40px;
+                }
+            }
+
+            &--views
+            {
+                font-family: g.$fontSubtitle;
+                font-size: 15px;
+
+                @media (min-width: map-get(g.$breakPoint,'S')) {
+                    font-size: 20px;
+                }
+            }
+
+            &--date
+            {
+                position: absolute;
+                right: 0;
+                top: 0;
+                font-size: 12px;
+                font-style: italic;
+                font-family: g.$fontSubtitle;
+
+                @media (min-width: map-get(g.$breakPoint,'S')) {
+                    font-size: 15px;
+                }
+            }
+        }
+
+        &--artist-info
+        {
+            width: 100%;
+            border-bottom: 1px solid g.$white;
+            padding-bottom: 5px;
+
+            &--bar
+            {
+                display: grid;
+                grid-template-columns: repeat(2,auto);
+                padding-top: 10px;
+                margin-bottom: 15px;
+
+                &--artist
+                {
+                    display: grid;
+                    grid-template-columns: 60px auto;
+                    column-gap: 10px;
+
+                    &--image
+                    {
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 100%;
+                        object-fit: cover;
+                        box-shadow: 0 3px 6px g.$black;
+                    }
+
+                    &--button
+                    {
+                        justify-self: end;
+                        --width: 110px!important;
+                        --fontSizeUnfollow: 14px!important;
+
+                        @media (min-width: map-get(g.$breakPoint, 'S')) {
+                            --width: 130px!important;
+                            --fontSizeUnfollow: 18px!important;
+                        }
+                    }
+
+                    &--info
+                    {
+                        color: g.$white;
+
+                        &--name
+                        {
+                            font-family: g.$fontSubtitle;
+                            font-size: 20px;
+                            font-weight: bold;
+                        }
+
+                        &--followers
+                        {
+                            font-family: g.$fontSubtitle;
+                            font-size: 15px;
+                            font-style: italic;
+                        }
+                    }
+                }
+            }
+
+            &--desc
+            {
+                color: g.$white;
+                font-size: 15px;
+                font-family: g.$fontBody;
+                text-align: justify;
+
+                @media (min-width: map-get(g.$breakPoint, 'S')) {
+                    padding-left: 60px;
+                }
+
+            }
+        }
+    }
+}

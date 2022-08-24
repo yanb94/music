@@ -1,0 +1,25 @@
+# Read the documentation: https://github.com/FriendsOfSymfony/FOSElasticaBundle/blob/master/doc/setup.md
+fos_elastica:
+    clients:
+        default: { url: '%env(ELASTICSEARCH_URL)%' }
+    indexes:
+        song:
+            indexable_callback: ['@index_song_service','isSongIndexable']
+            persistence:
+                driver: orm
+                model: App\Entity\Song
+                provider: ~
+                finder: ~
+                listener: ~
+            properties:
+                name: ~
+        playlist:
+            indexable_callback: ['@index_playlist_service','isPlaylistIndexable']
+            persistence:
+                driver: orm
+                model: App\Entity\Playlist
+                provider: ~
+                finder: ~
+                listener: ~
+            properties:
+                name: ~

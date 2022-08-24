@@ -1,0 +1,87 @@
+$fontTitle: "Source Sans Pro";
+$fontSubtitle: "Titillium Web";
+$fontBody: "Roboto";
+
+@font-face {
+    font-family: $fontTitle;
+    src: url("./../../fonts/SourceSansPro-Regular.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: $fontTitle;
+    src: url("./../../fonts/SourceSansPro-Bold.ttf");
+    font-display: swap;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: $fontTitle;
+    src: url("./../../fonts/SourceSansPro-Italic.ttf");
+    font-display: swap;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: $fontTitle;
+    src: url("./../../fonts/SourceSansPro-BoldItalic.ttf");
+    font-display: swap;
+    font-style: italic;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: $fontSubtitle;
+    src: url("./../../fonts/TitilliumWeb-Regular.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: $fontSubtitle;
+    src: url("./../../fonts/TitilliumWeb-Bold.ttf");
+    font-display: swap;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: $fontSubtitle;
+    src: url("./../../fonts/TitilliumWeb-Italic.ttf");
+    font-display: swap;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: $fontSubtitle;
+    src: url("./../../fonts/TitilliumWeb-BoldItalic.ttf");
+    font-display: swap;
+    font-style: italic;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: $fontBody;
+    src: url("./../../fonts/Roboto-Regular.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: $fontBody;
+    src: url("./../../fonts/Roboto-Bold.ttf");
+    font-display: swap;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: $fontBody;
+    src: url("./../../fonts/Roboto-Italic.ttf");
+    font-display: swap;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: $fontBody;
+    src: url("./../../fonts/Roboto-BoldItalic.ttf");
+    font-display: swap;
+    font-style: italic;
+    font-weight: bold;
+}

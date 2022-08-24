@@ -1,0 +1,15 @@
+{% extends "base_email.mjml.twig" %}
+
+{% block body %}
+
+    <mj-text color="#fff" font-size="15px" line-height="25px">
+        Bonjour <b>{{ lastname }} {{ firstname }}</b>,<br/><br/>
+
+        Nous vous informons que votre abonnement à bien été enregistré.
+        Vous pouvez dès à présent accéder à l'ensemble de nos contenus en vous connectant sur Song.
+    </mj-text>
+    <mj-button font-size="20px" href="{{ app.request.getSchemeAndHttpHost() }}" target="_blank" background-color="#00600f">
+        Accéder à Song
+    </mj-button>
+
+{% endblock %}

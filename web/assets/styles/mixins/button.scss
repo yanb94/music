@@ -1,0 +1,79 @@
+@use "@abstractStyle" as g;
+
+@mixin button($theme,$fontsize: 25px ,$width: 200px, $height: 60px) {
+    
+    font-size: $fontsize;
+    width: $width;
+    height: $height;
+    font-weight: bold;
+    font-family: g.$fontSubtitle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-align: center;
+    
+    @if $theme == "secondary" {
+        @include secondary_button();
+    }
+    
+    @if $theme == "primary" {
+        @include primary_button();
+    }
+
+    @if $theme == "primary_light" {
+        @include primary_light_button();
+    }
+
+    @content;
+}
+
+@mixin secondary_button()
+{
+    background-color: map-get($map: g.$secondary, $key: "dark");
+    color: g.$white;
+    box-shadow: 0 2px 2px map-get($map: g.$secondary, $key: "light"); 
+
+    transition: 0.7s ease;
+
+    &:hover
+    {
+        background-color: map-get($map: g.$secondary, $key: "regular");
+        box-shadow: 0 2px 2px map-get($map: g.$secondary, $key: "dark"); 
+    }
+
+    &:disabled,&[disabled]
+    {
+        background-color: map-get($map: g.$secondary, $key: "light");
+        box-shadow: none;
+    }
+}
+
+@mixin primary_button()
+{
+    background-color: map-get($map: g.$primary, $key: "regular");
+    color: g.$white;
+    border: 2px solid g.$white;
+
+    transition: 0.7s ease;
+
+    &:hover
+    {
+        background-color: map-get($map: g.$primary, $key: "light");
+    }
+}
+
+@mixin primary_light_button()
+{
+    background-color: map-get($map: g.$primary, $key: "light");
+    color: g.$white;
+    border: 2px solid g.$white;
+
+    transition: 0.7s ease;
+
+    &:hover
+    {
+        background-color: darken(map-get($map: g.$primary, $key: "light"), 5) ;
+    }
+}
+

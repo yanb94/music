@@ -1,0 +1,261 @@
+@use "@abstractStyle" as g;
+
+.stats-user
+{
+    display: flex;
+    justify-content: center;
+    padding-top: 75px;
+    padding-bottom: 20px;
+
+    min-height: 100vh;
+
+    &--content
+    {
+        max-width: 768px;
+        width: 90%;
+        padding-top: 10px;
+
+        &--loading
+        {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 30px 10px;
+        }
+
+        &--previous
+        {
+            color: g.$white;
+            margin-top: 20px;
+            margin-bottom: 5px;
+            font-size: 25px;
+            font-family: g.$fontSubtitle;
+
+            a
+            {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            svg
+            {
+                font-size: 30px;
+            }
+        }
+
+        &--datas
+        {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 150px);
+            align-items: center;
+            justify-content: center;
+
+            margin-top: 20px;
+            column-gap: 56px;
+            row-gap: 30px;
+
+            &--item
+            {
+                height: 150px;
+                width: 150px;
+                color: g.$white;
+                font-family: g.$fontSubtitle;
+
+                background-color: map-get($map: g.$primary, $key: 'light');
+                box-shadow: 0 3px 6px g.$black;
+                border-radius: 5px;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                &--title
+                {
+                    font-size: 30px;
+                }
+
+                &--long-title
+                {
+                    font-size: 16px;
+                    line-height: 18px;
+                    text-align: center;
+                }
+
+                &--nb
+                {
+                    font-weight: bold;
+                    font-size: 60px;
+                    line-height: 80px;
+                }
+            }
+        }
+
+        &--graph
+        {
+            margin-top: 30px;
+
+            &--title
+            {
+                font-family: g.$fontSubtitle;
+                font-size: 25px;
+                color: g.$white;
+                margin-top: 20px;
+            }
+
+            &--canvas
+            {
+                background-color: g.$white;
+                padding: 20px;
+            }
+        }
+
+        &--paiement-title
+        {
+            font-family: g.$fontSubtitle;
+            font-size: 25px;
+            color: g.$white;
+            margin-top: 20px;
+        }
+
+        &--paiement-item
+        {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            grid-template-rows: auto auto auto auto;
+
+            color: g.$white;
+            font-family: g.$fontSubtitle;
+            font-size: 20px;
+            padding: 10px 5px;
+
+            @media (min-width: map-get(g.$breakPoint,'S')) {
+                display: grid;
+                grid-template-columns: repeat(4,1fr);
+                grid-row: auto;
+            }
+
+            &:nth-of-type(odd)
+            {
+                background-color: map-get($map: g.$primary, $key: 'light');
+            }
+
+            &--amount
+            {
+                
+                @media (min-width: map-get(g.$breakPoint,'S')) {
+                    text-align: right;
+                    font-weight: bold;
+                }
+            }
+
+            &--amount,&--month,&--status
+            {
+                grid-column: 1 / 4;
+                font-size: 15px;
+
+                &.hidden
+                {
+                    display: none;
+
+                    @media (min-width: map-get(g.$breakPoint,'S')) {
+                        display: block;
+                    }
+                }
+
+                @media (min-width: map-get(g.$breakPoint,'S')) {
+                    display: block; 
+                    font-size: 20px;
+                    grid-column: initial;
+                }
+            }
+
+            &--see-more
+            {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                padding: 0 10px;
+                grid-row: 1;
+                grid-column: 2;
+
+                @media (min-width: map-get(g.$breakPoint,'S')) {
+                    display: none; 
+                }
+
+                svg
+                {
+                    font-size: 30px;
+                    margin-top: -10px;
+                }
+            }
+
+            &--phone-label
+            {
+                @media (min-width: map-get(g.$breakPoint,'S')) {
+                    display: none; 
+                }
+            }
+        }
+
+        &--paiement-label
+        {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+
+            color: g.$white;
+            font-family: g.$fontSubtitle;
+            font-size: 20px;
+            font-weight: bold;
+            border-bottom: 1px solid g.$white;
+
+            padding: 0 5px;
+
+            @media (min-width: map-get(g.$breakPoint,'S')) {
+                display: grid;
+                grid-template-columns: repeat(4,1fr);
+            }
+
+            &--amount
+            {
+                text-align: right;
+            }
+
+            &--amount,&--month,&--status
+            {
+                display: none;
+
+                @media (min-width: map-get(g.$breakPoint,'S')) {
+                    display: block; 
+                }
+            }
+        }
+
+        &--loader
+        {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+
+        &--partial-loader
+        {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        &--error
+        {
+            font-family: g.$fontSubtitle;
+            font-size: 20px;
+            padding: 10px;
+            color: g.$white;
+        }
+    }
+}

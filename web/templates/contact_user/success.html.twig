@@ -1,0 +1,17 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% set url = ea_url().setController('App\\Controller\\Admin\\UserCrudController').setAction('index') %}
+
+{% block page_actions %}
+    <a class="btn btn-secondary" href="{{ url }}">Retour</a>
+{% endblock %}
+
+{% block page_title %}
+    Message envoyé avec succès
+{% endblock %}
+
+{% block page_content %}
+    <div class="alert alert-success">
+        Votre message a bien été envoyé.
+    </div>
+{% endblock %}

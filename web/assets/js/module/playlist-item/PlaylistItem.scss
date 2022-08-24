@@ -1,0 +1,80 @@
+@use "@abstractStyle" as g;
+
+.playlist-item
+{
+    --size: 250px;
+
+    width: var(--size);
+    color: g.$white;
+
+    &--cont-image
+    {
+        height: var(--size);
+        width: var(--size);
+        position: relative;
+        box-shadow: 0 3px 6px map-get($map: g.$primary, $key: "dark");
+        overflow: hidden;
+        
+        &--wrap
+        {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            top: -5px;
+            left: -5px;
+            position: absolute;
+
+            &--image
+            {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: ease .7s;
+
+                &:hover
+                {
+                    transform: scale(1.1);
+                }
+            }
+        }
+
+        &::before
+        {
+            content: "";
+            background-color: map-get($map: g.$primary, $key: "light");
+            height: var(--size);
+            width: var(--size);
+            position: absolute;
+            top: 9px;
+            left: 5px;
+            z-index: 0;
+        }
+
+    }
+
+    &--info
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        margin-top: 3px;
+
+        &--name
+        {
+            font-size: 20px;
+            font-weight: bold;
+            font-family: g.$fontSubtitle;
+        }
+
+        &--nb-songs
+        {
+            font-size: 15px;
+            font-family: g.$fontSubtitle;
+            margin-top: -6px;
+        }
+    }
+}

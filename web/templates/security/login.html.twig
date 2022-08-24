@@ -1,0 +1,38 @@
+{% extends 'base_with_no_react.html.twig' %}
+
+{% block title %}Accéder a l'espace d'administration{% endblock %}
+
+{% block entry_tag %}
+    {{ encore_entry_link_tags('login') }}
+    {{ encore_entry_script_tags('login') }}
+{% endblock %}
+
+{% block body %}
+<form class="login-form" method="post">
+
+    <h1 class="login-form--form--title">Se connecter à l'espace d'administration</h1>
+
+    {% if error %}
+        <div class="login-form--alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <div class="login-form--form--field">
+        <label for="inputUsername">Nom d'utilisateur</label>
+        <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
+    </div>
+
+    <div class="login-form--form--field">
+        <label for="inputPassword">Mot de passe</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+    </div>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+    <div class="login-form--form--cont-button">
+        <input class="login-form--form--button" type="submit" value="Se connecter"/>
+    </div>
+
+</form>
+{% endblock %}

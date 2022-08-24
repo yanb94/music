@@ -1,0 +1,87 @@
+@use "@abstractStyle" as g;
+
+.drawer
+{
+    display: grid;
+    grid-template-rows: 250px auto;
+    position: fixed;
+    top: 76px;
+    width: 300px;
+    bottom: 0;
+    left:0;
+    transform: translateX(-300px);
+
+    box-shadow: 2px 2px 3px map-get($map: g.$primary, $key: "regular");
+    overflow-y: scroll;
+    transition: .5s ease;
+    z-index: 100000;
+
+    @media (min-width: map-get($map: g.$breakPoint, $key: "M")) {
+        display: none!important;
+    }
+
+    &.open
+    {
+        transform: translateX(0);
+    }
+
+    &--head
+    {
+        background-color: map-get($map: g.$primary, $key: "dark");
+        color: g.$white;
+        font-family: g.$fontTitle;
+        font-size: 45px;
+        font-weight: bold;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 250px;
+    }
+
+    &--body
+    {
+        background-color: map-get($map: g.$primary, $key: "light");
+        color: g.$white;
+
+        &--list
+        {
+            display: grid;
+            grid-auto-flow: row;
+            row-gap: 20px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+
+            &--item
+            {
+                font-family: g.$fontSubtitle;
+                font-weight: bold;
+                font-size: 25px;
+                padding-left: 30px;
+                height: 30px;
+            }
+        }
+    }
+
+    &--background
+    {
+        position: fixed;
+        top: 76px;
+        right: 0;
+        bottom: 0;
+        left:0;
+        z-index: 99999;
+        display: none;
+        background-color: rgba($color: map-get($map: g.$primary, $key: "dark"), $alpha: .5);
+
+        &.open
+        {
+            display: initial;
+        }
+
+        @media (min-width: map-get($map: g.$breakPoint, $key: "M")) {
+            display: none!important;
+        }
+    }
+    
+}

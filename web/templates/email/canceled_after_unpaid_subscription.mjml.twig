@@ -1,0 +1,13 @@
+{% extends "base_email.mjml.twig" %}
+
+{% block body %}
+    <mj-text color="#fff" font-size="15px" line-height="30px">
+        Bonjour <b>{{ lastname }} {{ firstname }}</b>, <br>
+
+        Suite à l'impossibilité de procéder au payement de votre abonnement, celui-ci vient d'être automatiquement annulé.
+        Vous avez néanmoins la possibilité de souscrire un nouvel abonnement en vous connectant sur Song.
+        <br><br>
+
+        L'équipe de song <br><br>
+    </mj-text>
+{% endblock %}

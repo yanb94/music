@@ -1,0 +1,36 @@
+@use "@abstractStyle" as g;
+
+.artist-item
+{
+    &--img
+    {
+        border-radius: 100%;
+        box-shadow: 0 3px 6px g.$black;
+        width: 100%;
+    }
+
+    &--title
+    {
+        text-align: center;
+        font-family: g.$fontSubtitle;
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    &--nb-follower
+    {
+        text-align: center;
+        font-family: g.$fontSubtitle;
+        font-size: 20px;
+        font-style: italic;
+    }
+
+    &--button
+    {
+        width: 100%;
+        line-height: 25px;
+        font-size: 20px;
+        padding: 5px;
+        margin-top: 10px;
+    }
+}

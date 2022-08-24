@@ -1,0 +1,125 @@
+@use "@abstractStyle" as g;
+
+.artist-page
+{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+
+    &--loading
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+
+    &--partialLoading
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 0;
+    }
+
+    &--content
+    {
+        max-width: 850px;
+        width: 90%;
+        padding-top: 115px;
+        padding-bottom: 75px;
+
+        &--info
+        {
+            border-bottom: 2px solid g.$white;
+            display: grid;
+            grid-template-columns: 1fr;
+            justify-items: center;
+            color: g.$white;
+            width: 100%;
+
+            @media(min-width: map-get(g.$breakPoint,'S'))
+            {
+                grid-template-columns: 200px auto 140px;
+                grid-template-rows: 40px 30px auto;
+                justify-items: flex-start;
+            }
+
+            &--image
+            {
+                height: 150px;
+                width: 150px;
+                border-radius: 100%;
+                box-shadow: 0 3px 6px g.$black;
+
+                @media(min-width: map-get(g.$breakPoint,'S')){
+                    grid-column: 1;
+                    grid-row: 1 / 4;
+
+                    margin: 10px 5px;
+                }
+            }
+
+            &--title
+            {
+                font-family: g.$fontTitle;
+                font-size: 40px;
+                font-weight: bold;
+
+                @media(min-width: map-get(g.$breakPoint,'S')){
+                    grid-column: 2;
+                    grid-row: 1;
+                }
+            }
+
+            &--follower
+            {
+                font-family: g.$fontSubtitle;
+                font-size: 20px;
+                font-style: italic;
+
+                @media(min-width: map-get(g.$breakPoint,'S')){
+                    grid-column: 2;
+                    grid-row: 2;
+                }
+            }
+
+            &--desc
+            {
+                font-family: g.$fontBody;
+                font-size: 15px;
+                margin-bottom: 20px;
+                width: 100%;
+
+                @media(min-width: map-get(g.$breakPoint,'S')){
+                    grid-column: 2 / 4;
+                    grid-row: 3;
+                    padding-top: 15px;
+                }
+            }
+        }
+
+        &--songs
+        {
+            &--title
+            {
+                font-family: g.$fontSubtitle;
+                font-weight: bold;
+                font-size: 25px;
+                color: g.$white;
+            }
+
+            &--list
+            {
+                display: grid;
+                justify-content: center;
+                justify-items: center;
+                row-gap: 40px;
+                grid-template-columns: repeat(auto-fill,150px);
+                padding-top: 30px;
+                column-gap: 60px;
+            }
+        }
+    }
+}

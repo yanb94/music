@@ -1,0 +1,97 @@
+@use "@abstractStyle" as g;
+
+.header
+{
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    width: 100%;
+    background-color: map-get($map: g.$primary, $key: "light");
+    height: 75px;
+    color: g.$white;
+
+    display: grid;
+    grid-template-columns: 150px auto;
+    padding: 10px;
+    
+    box-shadow: 0 1px 2px g.$white;
+
+
+    @media(min-width: map-get($map: g.$breakPoint, $key: "M"))
+    {
+        width: map-get($map: g.$breakPoint, $key: "M");
+        border-radius: 0 0 10px 10px;
+    }
+
+    &--title-cont
+    {
+        font-family: g.$fontTitle;
+        font-size: 45px;
+        font-weight: bold;
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        &--title
+        {
+            display: none;
+
+            @media(min-width: map-get($map: g.$breakPoint, $key: "M"))
+            {
+                display: initial;
+            }
+        }
+
+        &--drawer-button
+        {
+            display: initial;
+            font-size: 30px;
+            cursor: pointer;
+
+            @media(min-width: map-get($map: g.$breakPoint, $key: "M"))
+            {
+                display: none;
+            }
+        }
+    }
+
+    &--nav
+    {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        &--link
+        {
+            font-family: g.$fontSubtitle;
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 15px;
+
+            display: none;
+
+            @media(min-width: map-get($map: g.$breakPoint, $key: "M"))
+            {
+                display: block;
+            }
+
+            &:first-of-type
+            {
+                margin-left: 0;
+            }
+
+            &.icon
+            {
+                font-size: 30px;
+                display: block;
+            }
+        }
+    }
+}
+
+.cont-header
+{
+    display: flex;
+    justify-content: center;
+}

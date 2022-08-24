@@ -1,0 +1,12 @@
+{% extends "base_email.mjml.twig" %}
+
+{% block body %}
+    <mj-text color="#fff" font-size="15px" line-height="20px">
+        Bonjour <b>{{ lastname }} {{ firstname }}</b>,<br/><br/>
+
+        Pour confirmer votre inscription veuillez cliquer sur le boutton ci-dessous:
+    </mj-text>
+    <mj-button font-size="20px" href="{{ app.request.getSchemeAndHttpHost() }}/register-confirm/{{ token }}" target="_blank" background-color="#00600f">
+        Confirmer votre inscription
+    </mj-button>
+{% endblock %}

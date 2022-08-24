@@ -1,0 +1,14 @@
+{% extends "base_email.mjml.twig" %}
+
+{% block body %}
+    <mj-text color="#fff" font-size="15px" line-height="30px">
+        Bonjour <b>{{ lastname }} {{ firstname }}</b>, <br>
+
+        Nous informons de l'échec du renouvellement de votre abonnement.
+        Pour régler le problème veuillez vous assurez de disposer du montant suffisant ou veuillez mettre à jour vos information de paiement dans la zone dédié de votre espace sur Song.
+        En l'absence de réglement de votre part votre abonnement sera automatiquement annulé d'ici une journée.
+        <br><br>
+
+        L'équipe de song <br><br>
+    </mj-text>
+{% endblock %}

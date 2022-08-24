@@ -1,0 +1,122 @@
+@use "@abstractStyle" as g;
+@use "@mixins/button.scss" as button;
+
+.my-songs
+{
+    display: flex;
+    justify-content: center;
+    padding-top: 75px;
+    padding-bottom: 20px;
+
+    min-height: 100vh;
+
+    &--content
+    {
+        max-width: 850px;
+        width: 90%;
+        padding-top: 10px;
+
+        &--title
+        {
+            font-size: 30px;
+            color: g.$white;
+            font-weight: bold;
+            font-family: g.$fontTitle;
+            border-bottom: 2px solid g.$white;
+            position: relative;
+            min-height: 60px;
+            padding-right: 30px;
+            display: flex;
+            align-items: center;
+
+            @media (min-width: map-get($map: g.$breakPoint, $key: "S")) {
+                font-size: 45px;
+                margin-top: 20px;
+            }
+        }
+
+        &--search
+        {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            
+            padding: 15px 10px;
+            position: relative;
+
+            input
+            {
+                background-color: initial;
+                border: none;
+                border-bottom: 2px solid g.$white;
+                color: g.$white;
+                height: 35px;
+                font-family: g.$fontBody;
+                padding: 5px;
+                font-size: 20px;
+            }
+
+            svg
+            {
+                position: absolute;
+                right: 10px;
+                top: 15px;
+                font-size: 25px;
+            }
+        }
+
+        &--list
+        {
+            &--loading
+            {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                padding: 30px 10px;
+            }
+
+            &--partialLoading
+            {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+            }
+
+            &--error
+            {
+                color: g.$white;
+                font-size: 30px;
+                font-family: g.$fontSubtitle;
+                padding: 30px;
+                line-height: 35px;
+            }
+
+            &--notFound
+            {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: g.$white;
+                font-size: 35px;
+                font-family: g.$fontSubtitle;
+                padding: 30px 15px;
+                line-height: 35px;
+                text-align: center;
+            }
+        }
+
+        &--add
+        {
+            position: absolute;
+            right: 0;
+            bottom: 10px;
+            font-family: g.$fontSubtitle;
+            @include button.secondary_button();
+            padding: 10px;
+            font-size: 15px;
+        }
+    }
+}
+
